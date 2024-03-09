@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>如何高效检索信息：搜索引擎使用小技巧</title>
+      <link href="/article/%E7%AC%94%E8%AE%B0/google%E5%B8%B8%E7%94%A8%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/"/>
+      <url>/article/%E7%AC%94%E8%AE%B0/google%E5%B8%B8%E7%94%A8%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在当今信息爆炸的时代，搜索引擎已经成为我们获取信息的主要途径之一。 平时我们使用搜索引擎，通常是将关键字输入搜索框后回车，然后开始从上到下翻阅有用的信息。其实搜索引擎提供了多种语法，合理使用这些语法，能够帮助我们更加快速的找到有效信息。</p><span id="more"></span><p>本文将介绍一些常用的搜索语法，以帮助您更有效地获取信息。</p><h2 id="1-或-AND"><a href="#1-或-AND" class="headerlink" title="1. + 或 AND"></a>1. + 或 AND</h2><p>“与”，搜索包含多个关键词的结果</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">健康 +饮食</span><br></pre></td></tr></table></figure><p>返回同时包含“健康”和“饮食”的结果。</p><h2 id="2-OR-或"><a href="#2-OR-或" class="headerlink" title="2. OR 或 |"></a>2. OR 或 |</h2><p>或者</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">游戏 OR 电影</span><br></pre></td></tr></table></figure><p>返回包含“游戏”或“电影”的结果。</p><h2 id="3"><a href="#3" class="headerlink" title="3. -"></a>3. -</h2><p>用于排除包含特定的关键词的结果。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">水果 -苹果</span><br></pre></td></tr></table></figure><p>返回包含“水果”但不包含“苹果”的结果。</p><h2 id="4-“”"><a href="#4-“”" class="headerlink" title="4. “”"></a>4. “”</h2><p>用于精确匹配引号内的短语，即搜索结果中必须包含引号内的词。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“人工智能发展史”</span><br></pre></td></tr></table></figure><p>返回包含完整短语“人工智能发展史”的结果。</p><h2 id="5"><a href="#5" class="headerlink" title="5. *"></a>5. *</h2><p>占位符，可以表示一连串字符。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">平凡* 名著</span><br></pre></td></tr></table></figure><p>直接搜索<code>平凡 名著</code>,搜索结果可能包含《平凡》这本书，而搜索<code>平凡* 名著</code>前几个结果均为《平凡的世界》</p><h2 id="6-filetype"><a href="#6-filetype" class="headerlink" title="6. filetype"></a>6. filetype</h2><p>用于搜索特定类型的文件，搜索结果均为指定格式的文件。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxx报告 filetype:pdf</span><br></pre></td></tr></table></figure><p>返回xxx报告的PDF格式结果。</p><h2 id="7-site"><a href="#7-site" class="headerlink" title="7. site"></a>7. site</h2><p>用于限制搜索结果来自特定网站。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">site:wikipedia.org 太阳系</span><br></pre></td></tr></table></figure><p>返回来自维基百科的关于“太阳系”的结果。</p><h2 id="8-info"><a href="#8-info" class="headerlink" title="8. info"></a>8. info</h2><p>获取关于特定网站的信息。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info:github.com</span><br></pre></td></tr></table></figure><p>返回有关github网站的信息。</p><h2 id="9-related"><a href="#9-related" class="headerlink" title="9. related"></a>9. related</h2><p>查找与指定网站类似的网站。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">related:github.com</span><br></pre></td></tr></table></figure><p>返回类似于github的其他网站。</p><h2 id="10-inurl"><a href="#10-inurl" class="headerlink" title="10. inurl"></a>10. inurl</h2><p>用于在URL中查找包含某个特定关键词的结果。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inurl:weather 北京</span><br></pre></td></tr></table></figure><p>返回URL中包含“weather”并且和“北京”相关的结果。</p><h2 id="11-intitle"><a href="#11-intitle" class="headerlink" title="11. intitle"></a>11. intitle</h2><p>搜索标题中包含某个特定关键词的页面。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intitle:冬奥会</span><br></pre></td></tr></table></figure><p>返回标题中包含“冬奥会”的页面。</p><h2 id="12-intext"><a href="#12-intext" class="headerlink" title="12. intext"></a>12. intext</h2><p>搜索页面正文中包含某个特定关键词的页面。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intext:全球变暖</span><br></pre></td></tr></table></figure><p>这将返回正文中包含“全球变暖”的页面。</p><h2 id="13-allinurl"><a href="#13-allinurl" class="headerlink" title="13. allinurl"></a>13. allinurl</h2><p>查找URL中包含所有指定关键词的页面。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allinurl:美食 推荐</span><br></pre></td></tr></table></figure><p>返回URL中包含“美食”和“推荐”的页面。</p><h2 id="14-allintitle"><a href="#14-allintitle" class="headerlink" title="14. allintitle"></a>14. allintitle</h2><p>查找标题中包含所有指定关键词的页面。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allintitle:科技 创新</span><br></pre></td></tr></table></figure><p>返回标题中包含“科技”和“创新”的页面。</p><h2 id="15-allintext"><a href="#15-allintext" class="headerlink" title="15. allintext"></a>15. allintext</h2><p>查找正文中包含所有指定关键词的页面。</p><p><strong>示例：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allintext:健康 饮食</span><br></pre></td></tr></table></figure><p>返回正文中包含“健康”和“饮食”的页面。</p><p><em>注：</em></p><p><em>1.冒号需要使用英文状态的,且冒号后面没有空格；</em></p><p><em>2.指令前面需要用空格与关键字隔开，如<code>平凡的世界 filetype:pdf</code>，filetype前面有空格；</em></p><h2 id="这么多用法记不住怎么办"><a href="#这么多用法记不住怎么办" class="headerlink" title="这么多用法记不住怎么办"></a>这么多用法记不住怎么办</h2><p>不用担心，搜索引擎对应有高级搜索界面，例如谷歌高级搜索（<a href="https://www.google.com/advanced_search%EF%BC%89%EF%BC%8C%E5%9C%A8%E5%AF%B9%E5%BA%94%E8%BE%93%E5%85%A5%E6%A1%86%E4%B8%AD%E8%BE%93%E5%85%A5%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8D%B3%E5%8F%AF">https://www.google.com/advanced_search），在对应输入框中输入关键词即可</a></p><p><img src="https://i.zzrl.cc/img/image-20240307161547764.webp" alt="image-20240307161547764"></p><p>附：百度高级搜索（<a href="https://www.baidu.com/gaoji/advanced.html%EF%BC%89">https://www.baidu.com/gaoji/advanced.html）</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 搜索语法 </tag>
+            
+            <tag> 搜索引擎 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>远程连接终端——WindTerm安装使用教程</title>
+      <link href="/article/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%BB%88%E7%AB%AF%E2%80%94%E2%80%94WindTerm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+      <url>/article/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%BB%88%E7%AB%AF%E2%80%94%E2%80%94WindTerm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在使用xshell时，偶尔需要传输一下文件。然而，由于Xshell和Xftp是分开的，这就有些不太方便。于是找到了这个集SSH和SFTP一体的工具——WindTerm。开源免费，跨平台，支持 Windows、Linux 和 macOS，启动速度快。除此之外还有命令提示补全功能（根据历史命令）。</p><span id="more"></span><p>官方介绍</p><blockquote><p>A Quicker and better SSH&#x2F;Telnet&#x2F;Serial&#x2F;Shell&#x2F;Sftp client for DevOps.</p><p>WindTerm是一个更快、更好的SSH&#x2F;Telnet&#x2F;Serial&#x2F;Shell&#x2F;SFTP客户端，专为DevOps而设计。<br>预览图</p></blockquote><p><img src="https://i.zzrl.cc/img/image-20240304105603054.webp" alt="image-20240304105603054"></p><h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>开源项目，<a href="https://github.com/kingToolbox/WindTerm/releases">官方下载地址</a>，截止文章编辑时，Star数19.5k。</p><p>以win11为例，下载x86_64版本，解压缩后点击<code>WindTerm.exe</code>即可使用</p><h2 id="使用配置"><a href="#使用配置" class="headerlink" title="使用配置"></a>使用配置</h2><h3 id="锁屏密码"><a href="#锁屏密码" class="headerlink" title="锁屏密码"></a>锁屏密码</h3><p>WindTerm有30分钟锁定机制，闲置30分钟之后需要输入密码解锁，安装好后要首先设置一个密码，点击主界面右下角锁屏-更改主密码，旧密码留空，输入新密码、确认密码后点击更改即可。</p><p>也可以设置关闭自动锁屏，会话-首选项-设置-安全-锁屏-锁屏超时输入<code>0</code> 回车即可。</p><p>如果感觉每次输入密码太麻烦，可以到软件安装目录<code>WindTerm_2.x.x\ .wind\profiles\default.v10</code>中找到<code>user.config</code>文件，修改<code>application.masterPassword</code> 为<code>false</code>，重新启动，之后遇到密码界面，回车即可</p><h3 id="新建会话"><a href="#新建会话" class="headerlink" title="新建会话"></a>新建会话</h3><p>点击会话-新建会话，以ssh为例</p><ol><li><p>填写主机ip</p></li><li><p>选择端口</p></li><li><p>设置分组</p></li></ol><p>这里与Xshell不同，连接的用户名并不在会话中填写，而是与Onekey绑定，故这里只需填写主机和端口。</p><p><img src="https://i.zzrl.cc/img/image-20240304102815814.webp" alt="image-20240304102815814"></p><p><strong>OneKey</strong>，类似xshell中的用户密钥管理，或者浏览器的密码管理器，用于集中存放用户的认证凭据。首次设置，点击输入框中的设置图标，点击左下角设置OneKey管理器密码，设置好之后，点击左下角加号即可添加，之后选择对应onekey连接即可。</p><p><img src="https://i.zzrl.cc/img/IOXbED2ZMinSusd-1708400331284-25.webp" alt="image-20240217102929048"></p><h3 id="界面设置"><a href="#界面设置" class="headerlink" title="界面设置"></a>界面设置</h3><p>日常使用时，可能有很多功能用不到，实际最多使用的也就SSH是和文件管理，可以根据使用习惯把不需要的都关掉，节省屏幕空间。</p><img src="https://i.zzrl.cc/img/j8yD6N4A2vYTzMq.webp" alt="image-20240217103043313" style="zoom: 67%;" /><p>右上角专注模式旁边的按钮，点击即可设置界面，可以按照自己喜好保留、关闭菜单，按照上面图中设置，效果如下</p><p><img src="https://i.zzrl.cc/img/bRBqvfSI238KZeL.webp" alt="image-20240217103157950"></p><h3 id="自动复制"><a href="#自动复制" class="headerlink" title="自动复制"></a>自动复制</h3><p>会话-首选项-设置-文本-自动复制选定内容 即可开启自动复制，开启后在命令行中选中文本即可自动复制到剪切板。</p><p><img src="https://i.zzrl.cc/img/j7TxwJZ3rEHPpof.webp" alt="image-20240217103216844"></p><h3 id="会话空闲保活"><a href="#会话空闲保活" class="headerlink" title="会话空闲保活"></a>会话空闲保活</h3><p>长时间无操作闲置会话，可能会导致主机断开连接，造成命令行界面卡住，可以开启会话保活，在会话-首选项-默认会话设置-SSH-连接-发送空包以保持会话活动，设置15，即15秒自动发空包保持会话存活。</p><h2 id="其他内容"><a href="#其他内容" class="headerlink" title="其他内容"></a>其他内容</h2><p>在连接新装系统的主机时，如果遇到无法连接的情况，检查ssh服务是否安装并启动，可以使用<code>systemctl status ssh</code> 查看ssh状态，效果如下</p><p><img src="https://i.zzrl.cc/img/image-20240220114000634.webp" alt="image-20240220114000634"></p><p>若无ssh服务，ubuntu系统下，执行<code>sudo apt install openssh-server</code> 安装ssh服务后即可连接。</p><p>如果ssh服务没有问题，请检查防火墙是不是没有放行相应端口，新建会话时填写的ip地址是否正确。</p><p>使用过程中，若遇到软件方面的其他问题，可在<a href="https://github.com/kingToolbox/WindTerm/issues">官方仓库Issues</a>尝试寻找解决方案。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+            <tag> 安装教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>追逐日落</title>
+  
+  <subtitle>拨云现日，云上看景</subtitle>
+  <link href="https://zzrl.cc/atom.xml" rel="self"/>
+  
+  <link href="https://zzrl.cc/"/>
+  <updated>2024-03-07T09:33:53.835Z</updated>
+  <id>https://zzrl.cc/</id>
+  
+  <author>
+    <name>云景</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何高效检索信息：搜索引擎使用小技巧</title>
+    <link href="https://zzrl.cc/article/%E7%AC%94%E8%AE%B0/google%E5%B8%B8%E7%94%A8%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/"/>
+    <id>https://zzrl.cc/article/%E7%AC%94%E8%AE%B0/google%E5%B8%B8%E7%94%A8%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/</id>
+    <published>2024-03-07T09:29:16.000Z</published>
+    <updated>2024-03-07T09:33:53.835Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在当今信息爆炸的时代，搜索引擎已经成为我们获取信息的主要途径之一。 平时我们使用搜索引擎，通常是将关键字输入搜索框后回车，然后开始从上到下翻阅有用的信息。其实搜索引擎提供了多种语法，合理使用这些语法，能够帮助我们更加快速的找到有效信息。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://zzrl.cc/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="搜索语法" scheme="https://zzrl.cc/tags/%E6%90%9C%E7%B4%A2%E8%AF%AD%E6%B3%95/"/>
+    
+    <category term="搜索引擎" scheme="https://zzrl.cc/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>远程连接终端——WindTerm安装使用教程</title>
+    <link href="https://zzrl.cc/article/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%BB%88%E7%AB%AF%E2%80%94%E2%80%94WindTerm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>https://zzrl.cc/article/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%BB%88%E7%AB%AF%E2%80%94%E2%80%94WindTerm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</id>
+    <published>2024-03-04T04:02:56.000Z</published>
+    <updated>2024-03-05T13:14:51.596Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近在使用xshell时，偶尔需要传输一下文件。然而，由于Xshell和Xftp是分开的，这就有些不太方便。于是找到了这个集SSH和SFTP一体的工具——WindTerm。开源免费，跨平台，支持 Windows、Linux 和 macOS，启动速度快。除此之外还有命令提示补全功能（根据历史命令）。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发工具" scheme="https://zzrl.cc/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="工具" scheme="https://zzrl.cc/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="安装教程" scheme="https://zzrl.cc/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+</feed>
