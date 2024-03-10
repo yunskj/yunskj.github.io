@@ -21,26 +21,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zzrl.cc","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="种一棵树，最好的时间是十年前，其次是现在">
-<meta property="og:type" content="website">
-<meta property="og:title" content="追逐日落">
-<meta property="og:url" content="https://zzrl.cc/index.html">
+    <meta name="description" content="为什么要创建新用户？ 权限控制：每个用户可以被赋予特定的权限，以限制其对系统资源的访问。创建新用户可以根据需要为其分配适当的权限，从而提高系统安全性，即使账户被窃取，也能将损失控制在限定的范围内。 隔离环境：通过创建新用户，可以隔离不同用户之间的环境，避免彼此之间的干扰和冲突。 跟踪活动：每个用户的活动都可以被追踪和记录，有助于监控系统的安全性和运行情况。  创建新用户的方法1. 使用命令行创">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Linux上创建新用户并配置SSH免密连接">
+<meta property="og:url" content="https://zzrl.cc/article/Linux/%E5%9C%A8Linux%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E9%85%8D%E7%BD%AESSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5/index.html">
 <meta property="og:site_name" content="追逐日落">
-<meta property="og:description" content="种一棵树，最好的时间是十年前，其次是现在">
+<meta property="og:description" content="为什么要创建新用户？ 权限控制：每个用户可以被赋予特定的权限，以限制其对系统资源的访问。创建新用户可以根据需要为其分配适当的权限，从而提高系统安全性，即使账户被窃取，也能将损失控制在限定的范围内。 隔离环境：通过创建新用户，可以隔离不同用户之间的环境，避免彼此之间的干扰和冲突。 跟踪活动：每个用户的活动都可以被追踪和记录，有助于监控系统的安全性和运行情况。  创建新用户的方法1. 使用命令行创">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-10T09:16:18.000Z">
+<meta property="article:modified_time" content="2024-03-10T09:19:11.721Z">
 <meta property="article:author" content="云景">
-<meta property="article:tag" content="编程,后端,生活,技术,笔记,Java">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="SSH">
+<meta property="article:tag" content="sudo">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="秘钥对">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zzrl.cc/">
+<link rel="canonical" href="https://zzrl.cc/article/Linux/%E5%9C%A8Linux%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E9%85%8D%E7%BD%AESSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zzrl.cc/article/Linux/%E5%9C%A8Linux%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E9%85%8D%E7%BD%AESSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5/","path":"article/Linux/在Linux上创建新用户并配置SSH免密连接/","title":"在Linux上创建新用户并配置SSH免密连接"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>追逐日落</title>
+<title>在Linux上创建新用户并配置SSH免密连接 | 追逐日落</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-NKFBC3M2"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"GTM-NKFBC3M2","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -79,7 +85,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">追逐日落</h1>
+      <p class="site-title">追逐日落</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">拨云现日，云上看景</p>
@@ -133,7 +139,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -146,6 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">为什么要创建新用户？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">创建新用户的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7"><span class="nav-number">2.1.</span> <span class="nav-text">1. 使用命令行创建新用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">2. 设置用户密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8E%88%E4%BA%88%E6%96%B0%E7%94%A8%E6%88%B7sudo%E6%9D%83%E9%99%90%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">3. 授予新用户sudo权限（可选）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%B0%86%E6%96%B0%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0sudo%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">2.3.1.</span> <span class="nav-text">（推荐）可直接将新用户添加到sudo用户组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E8%BE%83%E4%B8%BA%E9%BA%BB%E7%83%A6%EF%BC%89%E4%BF%AE%E6%94%B9sudoers%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">（较为麻烦）修改sudoers文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%94%9F%E6%88%90SSH%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">2.4.</span> <span class="nav-text">4.客户端生成SSH密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%B0%86%E5%85%AC%E9%92%A5%E5%A4%8D%E5%88%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.5.</span> <span class="nav-text">5. 将公钥复制到服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%B0%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90%E4%BB%A5%E5%8F%8A%E6%89%80%E6%9C%89%E6%9D%83"><span class="nav-number">2.6.</span> <span class="nav-text">6.修改服务器新用户目录权限以及所有权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E8%BF%9B%E8%A1%8CSSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">尝试进行SSH免密连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="nav-number">4.</span> <span class="nav-text">删除用户</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -202,16 +209,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zzrl.cc/article/Linux/%E5%9C%A8Linux%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E9%85%8D%E7%BD%AESSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -225,13 +233,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 追逐日落">
+      <meta itemprop="name" content="在Linux上创建新用户并配置SSH免密连接 | 追逐日落">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/Linux/%E5%9C%A8Linux%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E9%85%8D%E7%BD%AESSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5/" class="post-title-link" itemprop="url">在Linux上创建新用户并配置SSH免密连接</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          在Linux上创建新用户并配置SSH免密连接
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -255,6 +263,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
     <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
       <span class="post-meta-item-icon">
@@ -278,8 +293,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
+    <div class="post-body" itemprop="articleBody"><span id="more"></span>
 
 <h2 id="为什么要创建新用户？"><a href="#为什么要创建新用户？" class="headerlink" title="为什么要创建新用户？"></a>为什么要创建新用户？</h2><ol>
 <li><strong>权限控制</strong>：每个用户可以被赋予特定的权限，以限制其对系统资源的访问。创建新用户可以根据需要为其分配适当的权限，从而提高系统安全性，即使账户被窃取，也能将损失控制在限定的范围内。</li>
@@ -378,7 +392,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill 10997</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
@@ -386,219 +399,63 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>云景
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zzrl.cc/article/Linux/%E5%9C%A8Linux%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E9%85%8D%E7%BD%AESSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5/" title="在Linux上创建新用户并配置SSH免密连接">https://zzrl.cc/article/Linux/在Linux上创建新用户并配置SSH免密连接/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
 </div>
 
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
 
+  <div class="social-list">
 
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zzrl.cc/article/%E7%AC%94%E8%AE%B0/google%E5%B8%B8%E7%94%A8%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.webp">
-      <meta itemprop="name" content="云景">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追逐日落">
-      <meta itemprop="description" content="种一棵树，最好的时间是十年前，其次是现在">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 追逐日落">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/%E7%AC%94%E8%AE%B0/google%E5%B8%B8%E7%94%A8%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">如何高效检索信息：搜索引擎使用小技巧</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-03-07 17:29:16 / 修改时间：17:33:53" itemprop="dateCreated datePublished" datetime="2024-03-07T17:29:16+08:00">2024-03-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
 </div>
 
-        </div>
-      </header>
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/SSH/" rel="tag"># SSH</a>
+              <a href="/tags/sudo/" rel="tag"># sudo</a>
+              <a href="/tags/vim/" rel="tag"># vim</a>
+              <a href="/tags/%E7%A7%98%E9%92%A5%E5%AF%B9/" rel="tag"># 秘钥对</a>
+          </div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在当今信息爆炸的时代，搜索引擎已经成为我们获取信息的主要途径之一。 平时我们使用搜索引擎，通常是将关键字输入搜索框后回车，然后开始从上到下翻阅有用的信息。其实搜索引擎提供了多种语法，合理使用这些语法，能够帮助我们更加快速的找到有效信息。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/%E7%AC%94%E8%AE%B0/google%E5%B8%B8%E7%94%A8%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zzrl.cc/article/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%BB%88%E7%AB%AF%E2%80%94%E2%80%94WindTerm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.webp">
-      <meta itemprop="name" content="云景">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追逐日落">
-      <meta itemprop="description" content="种一棵树，最好的时间是十年前，其次是现在">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 追逐日落">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%BB%88%E7%AB%AF%E2%80%94%E2%80%94WindTerm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">远程连接终端——WindTerm安装使用教程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-03-04 12:02:56" itemprop="dateCreated datePublished" datetime="2024-03-04T12:02:56+08:00">2024-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-05 21:14:51" itemprop="dateModified" datetime="2024-03-05T21:14:51+08:00">2024-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.4k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在使用xshell时，偶尔需要传输一下文件。然而，由于Xshell和Xftp是分开的，这就有些不太方便。于是找到了这个集SSH和SFTP一体的工具——WindTerm。开源免费，跨平台，支持 Windows、Linux 和 macOS，启动速度快。除此之外还有命令提示补全功能（根据历史命令）。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%BB%88%E7%AB%AF%E2%80%94%E2%80%94WindTerm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/%E7%AC%94%E8%AE%B0/google%E5%B8%B8%E7%94%A8%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="prev" title="如何高效检索信息：搜索引擎使用小技巧">
+                  <i class="fa fa-angle-left"></i> 如何高效检索信息：搜索引擎使用小技巧
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
+
 
 
 
