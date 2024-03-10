@@ -6,7 +6,7 @@
   <link href="https://zzrl.cc/atom.xml" rel="self"/>
   
   <link href="https://zzrl.cc/"/>
-  <updated>2024-03-10T09:20:38.838Z</updated>
+  <updated>2024-03-10T09:21:13.242Z</updated>
   <id>https://zzrl.cc/</id>
   
   <author>
@@ -21,13 +21,11 @@
     <link href="https://zzrl.cc/article/Linux/%E5%9C%A8Linux%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E9%85%8D%E7%BD%AESSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5/"/>
     <id>https://zzrl.cc/article/Linux/%E5%9C%A8Linux%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E9%85%8D%E7%BD%AESSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5/</id>
     <published>2024-03-10T09:16:18.000Z</published>
-    <updated>2024-03-10T09:20:38.838Z</updated>
+    <updated>2024-03-10T09:21:13.242Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;为什么要创建新用户？&quot;&gt;&lt;a href=&quot;#为什么要创建新用户？&quot; class=&quot;headerlink&quot; title=&quot;为什么要创建新用户？&quot;&gt;&lt;/a&gt;为什么要创建新用户？&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;权限控制&lt;/strong&gt;：每个用户可以被赋予特定的权限，以限制其对系统资源的访问。创建新用户可以根据需要为其分配适当的权限，从而提高系统安全性，即使账户被窃取，也能将损失控制在限定的范围内。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;隔离环境&lt;/strong&gt;：通过创建新用户，可以隔离不同用户之间的环境，避免彼此之间的干扰和冲突。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;跟踪活动&lt;/strong&gt;：每个用户的活动都可以被追踪和记录，有助于监控系统的安全性和运行情况。</summary>
+&lt;li&gt;&lt;strong&gt;权限控制&lt;/strong&gt;：每个用户可以被赋予特定的权限，以限制其对系统资源的访问。创建新用户可以根据需要为其分配适当的权限，从而提高系统安全性，即使账户被窃取，也能将损失控制在限定的范围内。</summary>
     
     
     
