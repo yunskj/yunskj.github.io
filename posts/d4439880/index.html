@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zzrl.cc","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="为什么要创建新用户？ 权限控制：每个用户可以被赋予特定的权限，以限制其对系统资源的访问。创建新用户可以根据需要为其分配适当的权限，从而提高系统安全性，即使账户被窃取，也能将损失控制在限定的范围内。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Linux上创建新用户并配置SSH免密连接">
+<meta property="og:url" content="https://zzrl.cc/posts/d4439880/index.html">
+<meta property="og:site_name" content="追逐日落">
+<meta property="og:description" content="为什么要创建新用户？ 权限控制：每个用户可以被赋予特定的权限，以限制其对系统资源的访问。创建新用户可以根据需要为其分配适当的权限，从而提高系统安全性，即使账户被窃取，也能将损失控制在限定的范围内。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-10T09:16:18.000Z">
+<meta property="article:modified_time" content="2024-03-15T01:45:14.904Z">
+<meta property="article:author" content="云景">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="SSH">
+<meta property="article:tag" content="sudo">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="秘钥对">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zzrl.cc/posts/d4439880/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zzrl.cc/posts/d4439880/index.html","path":"posts/d4439880/index.html","title":"在Linux上创建新用户并配置SSH免密连接"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>在Linux上创建新用户并配置SSH免密连接 | 追逐日落</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-NKFBC3M2"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"GTM-NKFBC3M2","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?181c8a01eb212f6fc4574030c63f149e"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="追逐日落" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">追逐日落</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">拨云现日，云上看景</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">为什么要创建新用户？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">创建新用户的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7"><span class="nav-number">2.1.</span> <span class="nav-text">1. 使用命令行创建新用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">2. 设置用户密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8E%88%E4%BA%88%E6%96%B0%E7%94%A8%E6%88%B7sudo%E6%9D%83%E9%99%90%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">3. 授予新用户sudo权限（可选）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%B0%86%E6%96%B0%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0sudo%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">2.3.1.</span> <span class="nav-text">（推荐）可直接将新用户添加到sudo用户组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E8%BE%83%E4%B8%BA%E9%BA%BB%E7%83%A6%EF%BC%89%E4%BF%AE%E6%94%B9sudoers%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">（较为麻烦）修改sudoers文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%94%9F%E6%88%90SSH%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">2.4.</span> <span class="nav-text">4.客户端生成SSH密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%B0%86%E5%85%AC%E9%92%A5%E5%A4%8D%E5%88%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.5.</span> <span class="nav-text">5. 将公钥复制到服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%B0%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90%E4%BB%A5%E5%8F%8A%E6%89%80%E6%9C%89%E6%9D%83"><span class="nav-number">2.6.</span> <span class="nav-text">6.修改服务器新用户目录权限以及所有权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E8%BF%9B%E8%A1%8CSSH%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">尝试进行SSH免密连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="nav-number">4.</span> <span class="nav-text">删除用户</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="云景"
+      src="/images/avatar.webp">
+  <p class="site-author-name" itemprop="name">云景</p>
+  <div class="site-description" itemprop="description">种一棵树，最好的时间是十年前，其次是现在</div>
+</div>
+
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/yunskj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yunskj" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yunskj@outlook.com" title="E-Mail → mailto:yunskj@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/weixin_60761472" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_60761472" rel="noopener me" target="_blank">CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://juejin.cn/user/2491948077418795/posts" title="稀土掘金 → https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;2491948077418795&#x2F;posts" rel="noopener me" target="_blank">稀土掘金</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zzrl.cc/posts/d4439880/index.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.webp">
+      <meta itemprop="name" content="云景">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追逐日落">
+      <meta itemprop="description" content="种一棵树，最好的时间是十年前，其次是现在">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="在Linux上创建新用户并配置SSH免密连接 | 追逐日落">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在Linux上创建新用户并配置SSH免密连接
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-10 17:16:18" itemprop="dateCreated datePublished" datetime="2024-03-10T17:16:18+08:00">2024-03-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-15 09:45:14" itemprop="dateModified" datetime="2024-03-15T09:45:14+08:00">2024-03-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="为什么要创建新用户？"><a href="#为什么要创建新用户？" class="headerlink" title="为什么要创建新用户？"></a>为什么要创建新用户？</h2><ol>
+<li><strong>权限控制</strong>：每个用户可以被赋予特定的权限，以限制其对系统资源的访问。创建新用户可以根据需要为其分配适当的权限，从而提高系统安全性，即使账户被窃取，也能将损失控制在限定的范围内。<span id="more"></span></li>
+<li><strong>隔离环境</strong>：通过创建新用户，可以隔离不同用户之间的环境，避免彼此之间的干扰和冲突。</li>
+<li><strong>跟踪活动</strong>：每个用户的活动都可以被追踪和记录，有助于监控系统的安全性和运行情况。</li>
+</ol>
+<h2 id="创建新用户的方法"><a href="#创建新用户的方法" class="headerlink" title="创建新用户的方法"></a>创建新用户的方法</h2><h3 id="1-使用命令行创建新用户"><a href="#1-使用命令行创建新用户" class="headerlink" title="1. 使用命令行创建新用户"></a>1. 使用命令行创建新用户</h3><p>在Linux系统中，可以使用<code>useradd</code>命令来创建新用户。</p>
+<blockquote>
+<p><code>adduser</code>也可以创建新用户，二者区别可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/li_101357/article/details/46778827">useradd 与adduser的区别</a></p>
+</blockquote>
+<p>例如，本文以用户<code>newuser</code>为例，使用如下命令创建一个名为<code>newuser</code>的用户，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd newuser</span><br></pre></td></tr></table></figure>
+
+<p>系统将提示您输入新用户的密码和其他信息。按照提示输入即可完成新用户的创建。</p>
+<h3 id="2-设置用户密码"><a href="#2-设置用户密码" class="headerlink" title="2. 设置用户密码"></a>2. 设置用户密码</h3><p>使用<code>passwd</code>命令来为新用户设置密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd newuser</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-授予新用户sudo权限（可选）"><a href="#3-授予新用户sudo权限（可选）" class="headerlink" title="3. 授予新用户sudo权限（可选）"></a>3. 授予新用户sudo权限（可选）</h3><p>如果需要给新用户添加sudo权限，这里以Ubuntu 22.04LTS为例，可以使用下面其中一个方法：</p>
+<h4 id="（推荐）可直接将新用户添加到sudo用户组"><a href="#（推荐）可直接将新用户添加到sudo用户组" class="headerlink" title="（推荐）可直接将新用户添加到sudo用户组"></a>（推荐）可直接将新用户添加到sudo用户组</h4><p>使用以下命令将新创建的用户添加到sudo 组：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser newuser sudo</span><br></pre></td></tr></table></figure>
+
+<p>要<strong>撤销</strong>用户的 sudo 权限（例如 newuser），可以执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo deluser newuser sudo</span><br></pre></td></tr></table></figure>
+
+<h4 id="（较为麻烦）修改sudoers文件"><a href="#（较为麻烦）修改sudoers文件" class="headerlink" title="（较为麻烦）修改sudoers文件"></a>（较为麻烦）修改sudoers文件</h4><p>打开 <code>/etc</code> 目录下的 <code>sudoers</code> 文件，在 <code>root ALL=(ALL) ALL</code> 语句下添加 <code>newuser ALL=(ALL) ALL</code> 。</p>
+<p>可以使用sftp工具直接更改后上传，也可以使用vim，下面是vim的操作方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 执行</span></span><br><span class="line">sudo vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p>按i在当前光标处进入编辑模式</p>
+<p>使用方向键移动光标，在root ALL&#x3D;(ALL) ALL语句下添加一行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newuser ALL=(ALL) ALL</span><br></pre></td></tr></table></figure>
+
+<p>按一下<code>esc</code>，即退出编辑模式；</p>
+<p>输入英文状态下的冒号<code>:</code>；</p>
+<p>之后输入wq后回车，即保存并退出；</p>
+<p>如果遇到提示<code>E45:readonly&#39;option is set (add to override)</code>无法保存修改，输入<code>:wq!</code>即可。</p>
+<p>如果修改错误需要丢弃修改，<code>esc</code>输入冒号后，输入<code>q!</code>回车，即不保存退出。</p>
+<blockquote>
+<p>vim使用方法<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-vim.html">菜鸟教程Linux vi&#x2F;vim</a></p>
+</blockquote>
+<p>要验证用户是否已添加到 sudo 组中，请运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -l -U &lt;username&gt;</span><br><span class="line"><span class="comment"># 例如</span></span><br><span class="line"><span class="comment"># sudo -l -U newuser</span></span><br></pre></td></tr></table></figure>
+
+<p>输出以下内容代表有sudo权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">匹配 %2<span class="variable">$s</span> 上 %1<span class="variable">$s</span> 的默认条目：</span><br><span class="line">    env_reset, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty</span><br><span class="line"></span><br><span class="line">用户 newuser 可以在 xiaoxin-virtual-machine 上运行以下命令：</span><br><span class="line">    (ALL : ALL) ALL</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-客户端生成SSH密钥对"><a href="#4-客户端生成SSH密钥对" class="headerlink" title="4.客户端生成SSH密钥对"></a>4.客户端生成SSH密钥对</h3><p>SSH密钥对由公钥和私钥组成，私钥保存在客户端，而公钥保存在服务器端。</p>
+<p>相较于用户名和密码认证方式，使用SSH密钥对认证方式具有以下优势：</p>
+<ul>
+<li>安全性：使用SSH密钥对登录认证更为安全可靠。<ul>
+<li>SSH密钥对安全强度远高于常规用户口令，可以杜绝暴力破解威胁。</li>
+<li>无法通过公钥推导出私钥。</li>
+</ul>
+</li>
+<li>便捷性：<ul>
+<li>如果您将公钥配置在Linux实例中，那么，在本地或者另外一台实例中，您可以无需输入密码，直接使用私钥通过SSH命令或相关工具登录。</li>
+<li>支持远程登录大量Linux实例。如果您需要批量维护多台Linux实例，可以使用这种方式登录。</li>
+</ul>
+</li>
+</ul>
+<p>打开cmd，使用<code>ssh-keygen</code>命令在客户端生成SSH密钥对：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;填入邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>按照提示，选择保存密钥的位置和设置密钥的密码。</p>
+<p>打开保存密钥对的文件夹，用记事本打开.pub结尾的文件，<code>ctrl+A</code>全选，<code>ctrl+C</code>复制内容。</p>
+<h3 id="5-将公钥复制到服务器"><a href="#5-将公钥复制到服务器" class="headerlink" title="5. 将公钥复制到服务器"></a>5. 将公钥复制到服务器</h3><p>打开 <code>/home/newuser/.ssh </code>目录下的<code>authorized_keys</code> 文件，如果不存在就新建对应目录和文件，将之前生成的公钥文件中的所有内容复制进去，保存。</p>
+<p>vim命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /home/newuser/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>按i进入编辑模式，粘贴刚才复制的公钥内容<br>ECS    :wq保存退出，或:wq!</p>
+<h3 id="6-修改服务器新用户目录权限以及所有权"><a href="#6-修改服务器新用户目录权限以及所有权" class="headerlink" title="6.修改服务器新用户目录权限以及所有权"></a>6.修改服务器新用户目录权限以及所有权</h3><ol>
+<li><p>为公钥文件和文件夹设置权限。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 /home/newuser/.ssh/authorized_keys</span><br><span class="line">chmod 700 /home/newuser/.ssh</span><br></pre></td></tr></table></figure>
+
+<p><strong>chmod</strong>命令可设置文件或文件夹的权限，三位数字为linux中的权限代码，介绍及教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-chmod.html">菜鸟教程 Linux chmod命令</a>。</p>
+</li>
+<li><p>将<code>/home/newuser</code>文件夹及其子文件夹、子文件所有权移交给git用户。</p>
+<p><strong>! 漏掉此步骤可能会导致登录新用户时提示<code>/home</code>下该用户目录不存在或者用户不存在导致无法登录</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R newuser:newuser /home/newuser</span><br></pre></td></tr></table></figure>
+
+<p>chown命令可以变更目录或文件的所有者，-R参数是对子目录及其内的所有文件生效。</p>
+</li>
+</ol>
+<h2 id="尝试进行SSH免密连接"><a href="#尝试进行SSH免密连接" class="headerlink" title="尝试进行SSH免密连接"></a>尝试进行SSH免密连接</h2><p>完成以上步骤后，就可以使用SSH免密连接登录到服务器了。在客户端命令行中使用以下命令登录到服务器，将your_server_ip替换成你的服务器IP地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh newuser@your_server_ip</span><br></pre></td></tr></table></figure>
+
+<p>系统将使用您生成的密钥对进行身份验证，若配置成功，无需输入密码即可登录到服务器。</p>
+<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><p>在上述步骤中，可以从“sudo”组中删除用户以取消其sudo权限。但是用户仍然存在于系统中。要从 Linux 系统中完全删除用户，请以 root 或 sudo 用户身份登录并运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo deluser &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果要删除用户及其主目录，请运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo deluser -r &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>若出现<code>userdel: user xxxxx is currently used by process 10997</code></p>
+<p>杀掉该进程即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill 10997</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>云景
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zzrl.cc/posts/d4439880/index.html" title="在Linux上创建新用户并配置SSH免密连接">https://zzrl.cc/posts/d4439880/index.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/SSH/" rel="tag"># SSH</a>
+              <a href="/tags/sudo/" rel="tag"># sudo</a>
+              <a href="/tags/vim/" rel="tag"># vim</a>
+              <a href="/tags/%E7%A7%98%E9%92%A5%E5%AF%B9/" rel="tag"># 秘钥对</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/ff1f1596/index.html" rel="prev" title="如何高效检索信息：搜索引擎使用小技巧">
+                  <i class="fa fa-angle-left"></i> 如何高效检索信息：搜索引擎使用小技巧
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备2023017774号-2 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">云景</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">5k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script>
+NexT.utils.loadComments('#twikoo-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js', () => {
+    twikoo.init(Object.assign({"enable":true,"visitor":false,"envId":"https://twikoo-zeta-sable.vercel.app"}, {
+      el: '#twikoo-comments'
+    }));
+  }, window.twikoo);
+});
+</script>
+
+</body>
+</html>

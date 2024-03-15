@@ -21,26 +21,37 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zzrl.cc","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="种一棵树，最好的时间是十年前，其次是现在">
-<meta property="og:type" content="website">
-<meta property="og:title" content="追逐日落">
-<meta property="og:url" content="https://zzrl.cc/index.html">
+    <meta name="description" content="前言最近在使用xshell时，偶尔需要传输一下文件。然而，由于Xshell和Xftp是分开的，这就有些不太方便。于是找到了这个集SSH和SFTP一体的工具——WindTerm。开源免费，跨平台，支持 Windows、Linux 和 macOS，启动速度快。除此之外还有命令提示补全功能（根据历史命令）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="远程连接终端——WindTerm安装使用教程">
+<meta property="og:url" content="https://zzrl.cc/posts/f682a309/index.html">
 <meta property="og:site_name" content="追逐日落">
-<meta property="og:description" content="种一棵树，最好的时间是十年前，其次是现在">
+<meta property="og:description" content="前言最近在使用xshell时，偶尔需要传输一下文件。然而，由于Xshell和Xftp是分开的，这就有些不太方便。于是找到了这个集SSH和SFTP一体的工具——WindTerm。开源免费，跨平台，支持 Windows、Linux 和 macOS，启动速度快。除此之外还有命令提示补全功能（根据历史命令）。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.zzrl.cc/img/image-20240304105603054.webp">
+<meta property="og:image" content="https://i.zzrl.cc/img/image-20240304102815814.webp">
+<meta property="og:image" content="https://i.zzrl.cc/img/IOXbED2ZMinSusd-1708400331284-25.webp">
+<meta property="og:image" content="https://i.zzrl.cc/img/j8yD6N4A2vYTzMq.webp">
+<meta property="og:image" content="https://i.zzrl.cc/img/bRBqvfSI238KZeL.webp">
+<meta property="og:image" content="https://i.zzrl.cc/img/j7TxwJZ3rEHPpof.webp">
+<meta property="og:image" content="https://i.zzrl.cc/img/image-20240220114000634.webp">
+<meta property="article:published_time" content="2024-03-04T04:02:56.000Z">
+<meta property="article:modified_time" content="2024-03-15T01:44:59.638Z">
 <meta property="article:author" content="云景">
-<meta property="article:tag" content="编程,后端,生活,技术,笔记,Java">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="安装教程">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.zzrl.cc/img/image-20240304105603054.webp">
 
 
-<link rel="canonical" href="https://zzrl.cc/">
+<link rel="canonical" href="https://zzrl.cc/posts/f682a309/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zzrl.cc/posts/f682a309/index.html","path":"posts/f682a309/index.html","title":"远程连接终端——WindTerm安装使用教程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>追逐日落</title>
+<title>远程连接终端——WindTerm安装使用教程 | 追逐日落</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-NKFBC3M2"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"GTM-NKFBC3M2","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -79,7 +90,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">追逐日落</h1>
+      <p class="site-title">追逐日落</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">拨云现日，云上看景</p>
@@ -133,7 +144,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -146,6 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">使用配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81%E5%B1%8F%E5%AF%86%E7%A0%81"><span class="nav-number">3.1.</span> <span class="nav-text">锁屏密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%BC%9A%E8%AF%9D"><span class="nav-number">3.2.</span> <span class="nav-text">新建会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">界面设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%A4%8D%E5%88%B6"><span class="nav-number">3.4.</span> <span class="nav-text">自动复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%A9%BA%E9%97%B2%E4%BF%9D%E6%B4%BB"><span class="nav-number">3.5.</span> <span class="nav-text">会话空闲保活</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9"><span class="nav-number">4.</span> <span class="nav-text">其他内容</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -205,231 +217,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zzrl.cc/posts/d4439880/index.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.webp">
-      <meta itemprop="name" content="云景">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追逐日落">
-      <meta itemprop="description" content="种一棵树，最好的时间是十年前，其次是现在">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 追逐日落">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/d4439880/index.html" class="post-title-link" itemprop="url">在Linux上创建新用户并配置SSH免密连接</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-03-10 17:16:18" itemprop="dateCreated datePublished" datetime="2024-03-10T17:16:18+08:00">2024-03-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-15 09:45:14" itemprop="dateModified" datetime="2024-03-15T09:45:14+08:00">2024-03-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="为什么要创建新用户？"><a href="#为什么要创建新用户？" class="headerlink" title="为什么要创建新用户？"></a>为什么要创建新用户？</h2><ol>
-<li><strong>权限控制</strong>：每个用户可以被赋予特定的权限，以限制其对系统资源的访问。创建新用户可以根据需要为其分配适当的权限，从而提高系统安全性，即使账户被窃取，也能将损失控制在限定的范围内。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/d4439880/index.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zzrl.cc/posts/ff1f1596/index.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.webp">
-      <meta itemprop="name" content="云景">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追逐日落">
-      <meta itemprop="description" content="种一棵树，最好的时间是十年前，其次是现在">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 追逐日落">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/ff1f1596/index.html" class="post-title-link" itemprop="url">如何高效检索信息：搜索引擎使用小技巧</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-03-07 17:29:16" itemprop="dateCreated datePublished" datetime="2024-03-07T17:29:16+08:00">2024-03-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-15 09:42:57" itemprop="dateModified" datetime="2024-03-15T09:42:57+08:00">2024-03-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在当今信息爆炸的时代，搜索引擎已经成为我们获取信息的主要途径之一。 平时我们使用搜索引擎，通常是将关键字输入搜索框后回车，然后开始从上到下翻阅有用的信息。其实搜索引擎提供了多种语法，合理使用这些语法，能够帮助我们更加快速的找到有效信息。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/ff1f1596/index.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zzrl.cc/posts/f682a309/index.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -443,13 +241,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 追逐日落">
+      <meta itemprop="name" content="远程连接终端——WindTerm安装使用教程 | 追逐日落">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/f682a309/index.html" class="post-title-link" itemprop="url">远程连接终端——WindTerm安装使用教程</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          远程连接终端——WindTerm安装使用教程
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -479,6 +277,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
     <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
       <span class="post-meta-item-icon">
@@ -502,17 +307,46 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在使用xshell时，偶尔需要传输一下文件。然而，由于Xshell和Xftp是分开的，这就有些不太方便。于是找到了这个集SSH和SFTP一体的工具——WindTerm。开源免费，跨平台，支持 Windows、Linux 和 macOS，启动速度快。除此之外还有命令提示补全功能（根据历史命令）。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/f682a309/index.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+    <div class="post-body" itemprop="articleBody"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在使用xshell时，偶尔需要传输一下文件。然而，由于Xshell和Xftp是分开的，这就有些不太方便。于是找到了这个集SSH和SFTP一体的工具——WindTerm。开源免费，跨平台，支持 Windows、Linux 和 macOS，启动速度快。除此之外还有命令提示补全功能（根据历史命令）。</p>
+<span id="more"></span>
+<p>官方介绍</p>
+<blockquote>
+<p>A Quicker and better SSH&#x2F;Telnet&#x2F;Serial&#x2F;Shell&#x2F;Sftp client for DevOps.</p>
+<p>WindTerm是一个更快、更好的SSH&#x2F;Telnet&#x2F;Serial&#x2F;Shell&#x2F;SFTP客户端，专为DevOps而设计。<br>预览图</p>
+</blockquote>
+<p><img src="https://i.zzrl.cc/img/image-20240304105603054.webp" alt="image-20240304105603054"></p>
+<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>开源项目，<a target="_blank" rel="noopener" href="https://github.com/kingToolbox/WindTerm/releases">官方下载地址</a>，截止文章编辑时，Star数19.5k。</p>
+<p>以win11为例，下载x86_64版本，解压缩后点击<code>WindTerm.exe</code>即可使用</p>
+<h2 id="使用配置"><a href="#使用配置" class="headerlink" title="使用配置"></a>使用配置</h2><h3 id="锁屏密码"><a href="#锁屏密码" class="headerlink" title="锁屏密码"></a>锁屏密码</h3><p>WindTerm有30分钟锁定机制，闲置30分钟之后需要输入密码解锁，安装好后要首先设置一个密码，点击主界面右下角锁屏-更改主密码，旧密码留空，输入新密码、确认密码后点击更改即可。</p>
+<p>也可以设置关闭自动锁屏，会话-首选项-设置-安全-锁屏-锁屏超时输入<code>0</code> 回车即可。</p>
+<p>如果感觉每次输入密码太麻烦，可以到软件安装目录<code>WindTerm_2.x.x\ .wind\profiles\default.v10</code>中找到<code>user.config</code>文件，修改<code>application.masterPassword</code> 为<code>false</code>，重新启动，之后遇到密码界面，回车即可</p>
+<h3 id="新建会话"><a href="#新建会话" class="headerlink" title="新建会话"></a>新建会话</h3><p>点击会话-新建会话，以ssh为例</p>
+<ol>
+<li><p>填写主机ip</p>
+</li>
+<li><p>选择端口</p>
+</li>
+<li><p>设置分组</p>
+</li>
+</ol>
+<p>这里与Xshell不同，连接的用户名并不在会话中填写，而是与Onekey绑定，故这里只需填写主机和端口。</p>
+<p><img src="https://i.zzrl.cc/img/image-20240304102815814.webp" alt="image-20240304102815814"></p>
+<p><strong>OneKey</strong>，类似xshell中的用户密钥管理，或者浏览器的密码管理器，用于集中存放用户的认证凭据。首次设置，点击输入框中的设置图标，点击左下角设置OneKey管理器密码，设置好之后，点击左下角加号即可添加，之后选择对应onekey连接即可。</p>
+<p><img src="https://i.zzrl.cc/img/IOXbED2ZMinSusd-1708400331284-25.webp" alt="image-20240217102929048"></p>
+<h3 id="界面设置"><a href="#界面设置" class="headerlink" title="界面设置"></a>界面设置</h3><p>日常使用时，可能有很多功能用不到，实际最多使用的也就SSH是和文件管理，可以根据使用习惯把不需要的都关掉，节省屏幕空间。</p>
+<img src="https://i.zzrl.cc/img/j8yD6N4A2vYTzMq.webp" alt="image-20240217103043313" style="zoom: 67%;" />
+
+<p>右上角专注模式旁边的按钮，点击即可设置界面，可以按照自己喜好保留、关闭菜单，按照上面图中设置，效果如下</p>
+<p><img src="https://i.zzrl.cc/img/bRBqvfSI238KZeL.webp" alt="image-20240217103157950"></p>
+<h3 id="自动复制"><a href="#自动复制" class="headerlink" title="自动复制"></a>自动复制</h3><p>会话-首选项-设置-文本-自动复制选定内容 即可开启自动复制，开启后在命令行中选中文本即可自动复制到剪切板。</p>
+<p><img src="https://i.zzrl.cc/img/j7TxwJZ3rEHPpof.webp" alt="image-20240217103216844"></p>
+<h3 id="会话空闲保活"><a href="#会话空闲保活" class="headerlink" title="会话空闲保活"></a>会话空闲保活</h3><p>长时间无操作闲置会话，可能会导致主机断开连接，造成命令行界面卡住，可以开启会话保活，在会话-首选项-默认会话设置-SSH-连接-发送空包以保持会话活动，设置15，即15秒自动发空包保持会话存活。</p>
+<h2 id="其他内容"><a href="#其他内容" class="headerlink" title="其他内容"></a>其他内容</h2><p>在连接新装系统的主机时，如果遇到无法连接的情况，检查ssh服务是否安装并启动，可以使用<code>systemctl status ssh</code> 查看ssh状态，效果如下</p>
+<p><img src="https://i.zzrl.cc/img/image-20240220114000634.webp" alt="image-20240220114000634"></p>
+<p>若无ssh服务，ubuntu系统下，执行<code>sudo apt install openssh-server</code> 安装ssh服务后即可连接。</p>
+<p>如果ssh服务没有问题，请检查防火墙是不是没有放行相应端口，新建会话时填写的ip地址是否正确。</p>
+<p>使用过程中，若遇到软件方面的其他问题，可在<a target="_blank" rel="noopener" href="https://github.com/kingToolbox/WindTerm/issues">官方仓库Issues</a>尝试寻找解决方案。</p>
+
     </div>
 
     
@@ -520,8 +354,56 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>云景
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zzrl.cc/posts/f682a309/index.html" title="远程连接终端——WindTerm安装使用教程">https://zzrl.cc/posts/f682a309/index.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+              <a href="/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" rel="tag"># 安装教程</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/ff1f1596/index.html" rel="next" title="如何高效检索信息：搜索引擎使用小技巧">
+                  如何高效检索信息：搜索引擎使用小技巧 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -530,6 +412,8 @@
 
 
 
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
 </div>
   </main>
 
