@@ -14,5 +14,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://rogn.top/sitemap.xml
-Sitemap: http://rogn.top/baidusitemap.xml
+Sitemap: https://www.zzrl.cc/sitemap.xml
+Sitemap: https://www.zzrl.cc/baidusitemap.xml
